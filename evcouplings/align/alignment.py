@@ -84,7 +84,7 @@ def write_fasta(sequences, fileobj, width=80):
         fileobj.write(wrap(seq, width=width) + "\n")
 
 
-def write_aln(sequences, fileobj, width=80):
+def write_aln(sequences, fileobj):
     """
     Write a list of IDs/sequences to a ALN-format file
 
