@@ -63,7 +63,8 @@ def read_fasta(fileobj):
             current_sequence += line.rstrip()
 
     # Also do not forget last entry in file
-    yield current_id, current_sequence
+    if current_id is not None:
+        yield current_id, current_sequence
 
 
 def write_fasta(sequences, fileobj, width=80):
