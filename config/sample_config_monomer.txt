@@ -140,7 +140,7 @@ align:
 
 # Inference of evolutionary couplings from sequence alignment
 couplings:
-    # current options: standard (model inference using plmc)
+    # current options: standard (model inference using plmc), mean_field for dca
     protocol: standard
 
     # number of plmc iterations
