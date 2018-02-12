@@ -10,7 +10,7 @@ Authors:
 from collections import namedtuple
 import pandas as pd
 from evcouplings.utils.system import (
-    run, create_prefix_folders, verify_resources, temp
+    run as system_run, create_prefix_folders, verify_resources, temp
 )
 from evcouplings.utils.config import check_required
 
@@ -100,7 +100,7 @@ def run_hmmbuild(alignment_file, prefix, cpu=None,
 
     cmd += [result.hmmfile, alignment_file]
 
-    return_code, stdout, stderr = run(cmd)
+    return_code, stdout, stderr = system_run(cmd)
 
     # also check we actually created some sort of alignment
     verify_resources(
@@ -225,7 +225,7 @@ def run_hmmsearch(hmmfile, database, prefix,
 
     cmd += [hmmfile, database]
 
-    return_code, stdout, stderr = run(cmd)
+    return_code, stdout, stderr = system_run(cmd)
 
     return result
 
@@ -353,7 +353,7 @@ def run_jackhmmer(query, database, prefix,
 
     cmd += [query, database]
 
-    return_code, stdout, stderr = run(cmd)
+    return_code, stdout, stderr = system_run(cmd)
 
     # also check we actually created some sort of alignment
     verify_resources(
@@ -494,7 +494,7 @@ def run_hmmscan(query, database, prefix,
 
     cmd += [database, query]
 
-    return_code, stdout, stderr = run(cmd)
+    return_code, stdout, stderr = system_run(cmd)
 
     # also check we actually created a table with hits
     verify_resources(
@@ -667,7 +667,7 @@ def run_hhfilter(input_file, output_file, threshold=95,
         "-v", str(2)
     ]
 
-    return_code, stdout, stderr = run(cmd)
+    return_code, stdout, stderr = system_run(cmd)
 
     verify_resources(
         "hhfilter returned empty alignment: "
